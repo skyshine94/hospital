@@ -80,7 +80,6 @@ public class RedisConfig extends CachingConfigurerSupport {
     //设置CacheManager缓存规则
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory) {
-        RedisSerializer<String> redisSerializer = new StringRedisSerializer();
 
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         ObjectMapper om = new ObjectMapper();
@@ -91,7 +90,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         //配置序列化（解决乱码的问题）
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(600)) //设置缓存的过期时间
-                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer)) //定义key的序列化规则
+                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer())) //定义key的序列化规则
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer)) //定义value的序列化规则
                 .disableCachingNullValues(); //不缓存空值
 
