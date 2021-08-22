@@ -109,7 +109,7 @@ public class WeixinApiController {
                 name = userInfo.getNickName();
             }
             //如果昵称为空使用手机号
-            if (StringUtils.isEmpty(name)) {
+            if (StringUtils.isEmpty(userInfo.getNickName())) {
                 name = userInfo.getPhone();
             }
             //用于前端判断，如果openid不为空，绑定手机号
