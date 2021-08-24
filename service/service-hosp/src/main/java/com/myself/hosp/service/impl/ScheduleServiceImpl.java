@@ -336,7 +336,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         if (releaseTime.isBeforeNow()) {
             cycle += 1;
         }
-        //获取所有可预约日期，最后一天显示即将放号
+        //获取所有可预约日期
         List<Date> dateList = new ArrayList<>();
         for (int i = 0; i < cycle; i++) {
             DateTime dateTime = new DateTime().plusDays(i);
