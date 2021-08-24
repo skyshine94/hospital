@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 常量初始化工具类
+ * HttpClient工具类
  *
  * @author Wei
  * @since 2021/7/11
