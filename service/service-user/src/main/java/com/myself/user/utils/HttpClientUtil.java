@@ -41,7 +41,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 /**
- * Http请求客户端
+ * 微信登录HttpClient工具类
  *
  * @author Wei
  * @since 2021/7/5

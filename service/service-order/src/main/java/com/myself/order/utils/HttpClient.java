@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * HttpClient工具类
+ * 微信支付HttpClient工具类
  *
  * @author Wei
  * @since 2021/7/11
