@@ -177,9 +177,9 @@ public class ScheduleServiceImpl implements ScheduleService {
         IPage<Date> iPage = this.getDateList(page, limit, bookingRule);
         List<Date> dateList = iPage.getRecords();
         //是否为预约首日所在页
-        Boolean isFirstDate = (page == 1) ? true : false;
+        Boolean isFirstPage = (page == 1) ? true : false;
         //是否为预约最后一日所在页
-        Boolean isLastDate = (page == iPage.getPages()) ? true : false;
+        Boolean isLastPage = (page == iPage.getPages()) ? true : false;
 
         //根据可预约日期、hoscode和depcode获取可预约排班规则信息
         Criteria criteria = Criteria.where("hoscode").is(hoscode)
@@ -200,7 +200,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         //使用stream流封装可预约日期、日期对应星期、预约状态
         scheduleRuleVoList.stream().forEach(item -> {
-            this.packageScheduleVo(item, dateList, isLastDate, isFirstDate, stopTime);
+            this.packageScheduleVo(item, dateList, isFirstPage, isLastPage, stopTime);
         });
 
         //可预约日期规则数据
@@ -229,7 +229,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return result;
     }
 
-    private void packageScheduleVo(BookingScheduleRuleVo bookingScheduleRuleVo, List<Date> dateList, Boolean isLastDate, Boolean isFirstDate, String stopTime) {
+    private void packageScheduleVo(BookingScheduleRuleVo bookingScheduleRuleVo, List<Date> dateList, Boolean isFirstPage, Boolean isLastPage, String stopTime) {
         //当天没有排班医生
         if (null == bookingScheduleRuleVo) {
             //就诊医生人数
@@ -247,7 +247,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         //设置状态
         bookingScheduleRuleVo.setStatus(0);
         //超过停挂时间不能预约
-        if (isFirstDate && bookingScheduleRuleVo.getWorkDate().equals(dateList.get(0))) {
+        if (isFirstPage && bookingScheduleRuleVo.getWorkDate().equals(dateList.get(0))) {
             DateTime stopDateTime = this.getDateTime(new Date(), stopTime);
             if (stopDateTime.isBeforeNow()) {
                 //停止预约
@@ -255,7 +255,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             }
         }
         //设置最后一页最后一条记录为即将预约
-        if (isLastDate && bookingScheduleRuleVo.getWorkDate().equals(dateList.get(dateList.size() - 1 ))) {
+        if (isLastPage && bookingScheduleRuleVo.getWorkDate().equals(dateList.get(dateList.size() - 1 ))) {
             bookingScheduleRuleVo.setStatus(1);
         }
     }
