@@ -170,16 +170,10 @@ public class ScheduleServiceImpl implements ScheduleService {
             throw new HospitalException(ResultCodeEnum.DATA_ERROR);
         }
         BookingRule bookingRule = hospital.getBookingRule();
-        //停挂时间
-        String stopTime = bookingRule.getStopTime();
 
         //分页获取可预约日期数据
         IPage<Date> iPage = this.getDateList(page, limit, bookingRule);
         List<Date> dateList = iPage.getRecords();
-        //是否为预约首日所在页
-        Boolean isFirstPage = (page == 1) ? true : false;
-        //是否为预约最后一日所在页
-        Boolean isLastPage = (page == iPage.getPages()) ? true : false;
 
         //根据可预约日期、hoscode和depcode获取可预约排班规则信息
         Criteria criteria = Criteria.where("hoscode").is(hoscode)
@@ -197,6 +191,13 @@ public class ScheduleServiceImpl implements ScheduleService {
         );
         AggregationResults<BookingScheduleRuleVo> aggregateResult = mongoTemplate.aggregate(aggregation, Schedule.class, BookingScheduleRuleVo.class);
         List<BookingScheduleRuleVo> scheduleRuleVoList = aggregateResult.getMappedResults();
+
+        //停挂时间
+        String stopTime = bookingRule.getStopTime();
+        //是否为预约首日所在页
+        Boolean isFirstPage = (page == 1) ? true : false;
+        //是否为预约最后一日所在页
+        Boolean isLastPage = (page == iPage.getPages()) ? true : false;
 
         //使用stream流封装可预约日期、日期对应星期、预约状态
         scheduleRuleVoList.stream().forEach(item -> {
