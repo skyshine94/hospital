@@ -68,7 +68,7 @@ public class PaymentServiceImpl extends ServiceImpl<PaymentMapper, PaymentInfo> 
         //更新支付信息
         paymentInfo.setPaymentStatus(PaymentStatusEnum.PAID.getStatus());
         paymentInfo.setCallbackTime(new Date());
-        paymentInfo.setTradeNo(map.get("transaction_id"));
+        paymentInfo.setTradeNo(map.get("transaction_id")); //微信支付订单号
         paymentInfo.setCallbackContent(map.toString());
         baseMapper.updateById(paymentInfo);
 
