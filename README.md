@@ -5,9 +5,11 @@
 1.1 项目结构：
 
 1)	common模块：
+
   a)	common-util模块：
-exception：全局异常处理类、自定义全局异常类
-result：全局统一返回结果类、统一返回结果状态信息类
+    exception：全局异常处理类、自定义全局异常类
+    result：全局统一返回结果类、统一返回结果状态信息类
+    
 b)	service-util模块：
 config：Swagger2配置类、redis配置类
 utils：MD5工具类
