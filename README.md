@@ -7,7 +7,9 @@
 1)	common模块：
 
     common-util模块：
+    
         exception：全局异常处理类、自定义全局异常类
+        
         result：全局统一返回结果类、统一返回结果状态信息类
     
 b)	service-util模块：
