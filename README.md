@@ -14,14 +14,17 @@
     
         config：Swagger2配置类、redis配置类
         utils：MD5工具类
-c)	rabbitmq-util模块
-service：发送消息
-config：消息转换器
-constant：常量类
+    rabbitmq-util模块：
+
+        service：发送消息
+        config：消息转换器
+        constant：常量类
 2)	model模块：
-a)	model：实体类
-b)	vo：vo类
-c)	enums：枚举类
+
+    model：实体类
+    vo：vo类
+    enums：枚举类
+    
 3)	service模块：
 a)	service-hosp模块：医院设置、数据接口、医院管理、前台数据接口、预约挂号
 b)	service-cmn模块：数据字典
