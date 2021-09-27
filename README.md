@@ -9,12 +9,11 @@
     common-util模块：
     
         exception：全局异常处理类、自定义全局异常类
-        
         result：全局统一返回结果类、统一返回结果状态信息类
+    service-util模块：
     
-b)	service-util模块：
-config：Swagger2配置类、redis配置类
-utils：MD5工具类
+        config：Swagger2配置类、redis配置类
+        utils：MD5工具类
 c)	rabbitmq-util模块
 service：发送消息
 config：消息转换器
