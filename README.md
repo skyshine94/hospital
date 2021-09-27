@@ -3,39 +3,8 @@
 一、项目概述
 
 1.1 项目结构：
+![image](https://user-images.githubusercontent.com/77769369/134840143-0ae7527d-608f-4bf9-b074-6ba1d5ea8b9f.png)
 
-1)	common模块：
-
-    common-util模块：
-    
-        exception：全局异常处理类、自定义全局异常类
-        result：全局统一返回结果类、统一返回结果状态信息类
-    service-util模块：
-    
-        config：Swagger2配置类、redis配置类
-        utils：MD5工具类
-    rabbitmq-util模块：
-
-        service：发送消息
-        config：消息转换器
-        constant：常量类
-2)	model模块：
-
-    model：实体类
-    vo：vo类
-    enums：枚举类
-    
-3)	service模块：
-a)	service-hosp模块：医院设置、数据接口、医院管理、前台数据接口、预约挂号
-b)	service-cmn模块：数据字典
-c)	service-user模块：用户登录、短信服务、微信服务、用户登录、就诊人管理、用户管理
-d)	service-msm模块：短信服务
-e)	service-oss模块：上传文件
-f)	service-order模块：订单
-g)	service-task模块：就医提醒
-h)	service-statistics模块：预约统计
-4)	service-client模块：服务调用
-5)	service-gateway模块：服务网关
 
 1.2 医院设置模块（后台系统）
 1.	准备工作：
