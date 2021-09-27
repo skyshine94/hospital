@@ -6,9 +6,9 @@
 
 1)	common模块：
 
-  a)	common-util模块：
-    exception：全局异常处理类、自定义全局异常类
-    result：全局统一返回结果类、统一返回结果状态信息类
+    common-util模块：
+        exception：全局异常处理类、自定义全局异常类
+        result：全局统一返回结果类、统一返回结果状态信息类
     
 b)	service-util模块：
 config：Swagger2配置类、redis配置类
@@ -32,6 +32,7 @@ g)	service-task模块：就医提醒
 h)	service-statistics模块：预约统计
 4)	service-client模块：服务调用
 5)	service-gateway模块：服务网关
+
 1.2 医院设置模块（后台系统）
 1.	准备工作：
 1)	构建service-hosp模块，创建配置类配置分页插件并加入@MapperScan扫描mapper。
