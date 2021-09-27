@@ -1,44 +1,41 @@
 # hospital业务梳理
 
-一、项目概述
+一、医院设置模块（后台系统）
 
-1.1 项目结构：
-![image](https://user-images.githubusercontent.com/77769369/134840143-0ae7527d-608f-4bf9-b074-6ba1d5ea8b9f.png)
+1.1	准备工作：
+  1)	构建service-hosp模块，创建配置类配置分页插件并加入@MapperScan扫描mapper。
+  2)	创建基础字段实体类，在isDeleted字段上加入@TableLogic启用逻辑删除。（model）
+  3)	创建Result统一返回结果类和ResultCodeEnum统一返回状态信息类。（common-util）
+  4)	引入MD5工具类。（service-util）
+  5)	创建swagger配置类（service-util），在需要使用swagger的所有模块的启动入口类加入@ComponentScan。
+  6)	创建HospitalException自定义异常类和GlobalExceptionHandler全局异常处理类。（common-util包）
+  7)	整合Logback，配置全局统一日志处理logback-spring.xml。（service-hosp）
 
-
-1.2 医院设置模块（后台系统）
-1.	准备工作：
-1)	构建service-hosp模块，创建配置类配置分页插件并加入@MapperScan扫描mapper。
-2)	创建基础字段实体类，在isDeleted字段上加入@TableLogic启用逻辑删除。（model）
-3)	创建Result统一返回结果类和ResultCodeEnum统一返回状态信息类。（common-util）
-4)	引入MD5工具类。（service-util）
-5)	创建swagger配置类（service-util），在需要使用swagger的所有模块的启动入口类加入@ComponentScan。
-6)	创建HospitalException自定义异常类和GlobalExceptionHandler全局异常处理类。（common-util包）
-7)	整合Logback，配置全局统一日志处理logback-spring.xml。（service-hosp）
-2.	业务：
-1)	获取所有医院设置：（service-hosp、HospitalSetController）
-调用mp方法。
-2)	逻辑删除医院设置：（service-hosp、HospitalSetController）
-调用mp方法。
-3)	分页带条件获取医院设置：（service-hosp、HospitalSetController）
-调用mp方法。
-4)	添加医院设置：（service-hosp、HospitalSetController）
-调用MD5工具类生成签名密钥。
-封装状态和签名密钥。
-调用mp方法。
-5)	根据id获取医院设置：（service-hosp、HospitalSetController）
-调用mp方法。
-6)	修改医院设置：（service-hosp、HospitalSetController）
-调用mp方法。
-7)	批量删除医院设置：（service-hosp、HospitalSetController）
-调用mp方法。
-8)	根据id锁定或解锁医院设置：（service-hosp、HospitalSetController）
-根据id获取医院设置。
-封装状态。
-调用mp方法。
-9)	根据id获取并发送签名密钥：（service-hosp、HospitalSetController）
-根据id获取医院设置。
-发送短信。
+1.2	业务：
+  1)	获取所有医院设置：（service-hosp、HospitalSetController）
+    调用mp方法。
+  2)	逻辑删除医院设置：（service-hosp、HospitalSetController）
+    调用mp方法。
+  3)	分页带条件获取医院设置：（service-hosp、HospitalSetController）
+    调用mp方法。
+  4)	添加医院设置：（service-hosp、HospitalSetController）
+    调用MD5工具类生成签名密钥。
+    封装状态和签名密钥。
+    调用mp方法。
+  5)	根据id获取医院设置：（service-hosp、HospitalSetController）
+    调用mp方法。
+  6)	修改医院设置：（service-hosp、HospitalSetController）
+    调用mp方法。
+  7)	批量删除医院设置：（service-hosp、HospitalSetController）
+    调用mp方法。
+  8)	根据id锁定或解锁医院设置：（service-hosp、HospitalSetController）
+    根据id获取医院设置。
+    封装状态。
+    调用mp方法。
+  9)	根据id获取并发送签名密钥：（service-hosp、HospitalSetController）
+    根据id获取医院设置。
+    发送短信。
+    
 1.3 数据字典模块（后台系统）
 1.	准备工作：
 1)	构建service-cmn模块，创建配置类配置分页插件并加入@MapperScan扫描mapper。
